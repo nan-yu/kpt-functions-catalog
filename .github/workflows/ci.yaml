@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - debug-set-ns
   pull_request:
     branches:
-      - master
+      - debug-set-ns
   schedule:
     - cron:  '0 17 * * *'
 
@@ -76,6 +76,6 @@ jobs:
       uses: docker://dockerhubnyu/blueprint-qualification:dev
       env:
         BLUEPRINT_DIRECTORY: examples
-        VALIDATE_PACKAGES: "annotate-config,istioctl-analyze,kubeval,suggest-psp"
+        VALIDATE_PACKAGES: "set-namespace"
         PACKAGES_NEED_NETWORK_FLAG:  kubeval
         PACKAGES_NEED_PGP: sops

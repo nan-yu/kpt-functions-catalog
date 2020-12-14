@@ -30,6 +30,10 @@ func main() {
 	resourceList.FunctionConfig = map[string]interface{}{}
 
 	cmd := framework.Command(resourceList, func() error {
+		fmt.Printf("len(resourceList.Items) = %d\n", len(resourceList.Items))
+		for _, item := range resourceList.Items {
+			fmt.Printf("item = %v\n", item)
+		}
 		resMap, err := resmapFactory.NewResMapFromRNodeSlice(resourceList.Items)
 		if err != nil {
 			return errors.Wrap(err, "failed to convert items to resource map")

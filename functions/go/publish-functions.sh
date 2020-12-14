@@ -31,7 +31,7 @@ make
 # iterate over each subdir, build and push Docker images.
 for dir in  */
 do
-  image_name=gcr.io/kpt-functions/"${dir%/}"
+  image_name=gcr.io/nanyu-gke-dev/"${dir%/}"
   image="${image_name}":"${image_tag}"
   set -x
   docker build -t "${image}" -t "${image_name}" -f "${dir}"/Dockerfile "${dir}"
