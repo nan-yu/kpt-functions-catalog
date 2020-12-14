@@ -19,7 +19,7 @@ set -euo pipefail
 BUILDONLY=${BUILDONLY:-}
 
 # if the `TAG` environment variable is not defined, set image_tag to `latest`.
-image_tag=${TAG:-latest}
+image_tag=dev2
 
 # if `image_tag` starts with "release-go-functions-", remove the prefix.
 prefix="release-go-functions-"
@@ -31,7 +31,7 @@ make
 # iterate over each subdir, build and push Docker images.
 for dir in  */
 do
-  image_name=gcr.io/kpt-functions/"${dir%/}"
+  image_name=gcr.io/nanyu-gke-dev/"${dir%/}"
   image="${image_name}":"${image_tag}"
   set -x
   docker build -t "${image}" -t "${image_name}" -f "${dir}"/Dockerfile "${dir}"

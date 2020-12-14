@@ -18,9 +18,9 @@
 
 set -eo pipefail
 
-TAG=${TAG:-dev}
+TAG=dev2
 SDK_REPO=https://github.com/GoogleContainerTools/kpt-functions-sdk
-export CATALOG_REPO=https://github.com/GoogleContainerTools/kpt-functions-catalog
+export CATALOG_REPO=https://github.com/nan-yu/kpt-functions-catalog
 export CHARTS_SRC="charts/bitnami"
 
 ############################

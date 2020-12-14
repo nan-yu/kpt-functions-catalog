@@ -3,50 +3,15 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - set-ns-test
   pull_request:
     branches:
-      - master
+      - set-ns-test
   schedule:
     - cron:  '0 17 * * *'
 
 jobs:
-  shell-ci:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest]
-    runs-on: ${{ matrix.platform }}
-    steps:
-    - uses: actions/checkout@v2
-    - name: Lint shell scripts, ignoring third-party files
-      run: |
-        find . -name "*.sh" > shell_files.out
-        shellcheck $(cat shell_files.out)
-
-  node-ci:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest]
-        node-version: [12.x]
-    runs-on: ${{ matrix.platform }}
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install and test NPM packages
-      run: |
-        cd functions/ts
-        npm ci
-        npm test
-    - name: Check licenses
-      run: |
-        cd functions/ts
-        npm run lint-license
-
   e2e-ci:
-    needs: [node-ci]
     strategy:
       matrix:
         platform: [ubuntu-latest]
@@ -54,24 +19,6 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install NPM packages
-      run: |
-        cd functions/ts
-        npm ci
-    - name: Build node docker images
-      if: matrix.platform == 'ubuntu-latest'
-      run: |
-        cd functions/ts
-        npm run kpt:docker-build
-    - name: Build go images
-      if: matrix.platform == 'ubuntu-latest'
-      run: |
-        cd functions/go
-        BUILDONLY=true TAG=dev ./publish-functions.sh
     - name: Run all e2e tests
       if: matrix.platform == 'ubuntu-latest'
       run: |
