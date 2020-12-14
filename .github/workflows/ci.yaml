@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - debug-sops
   pull_request:
     branches:
-      - master
+      - debug-sops
   schedule:
     - cron:  '0 17 * * *'
 
@@ -77,4 +77,13 @@ jobs:
       run: |
         sudo curl https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt -o /usr/local/bin/kpt
         sudo chmod +x /usr/local/bin/kpt
-        tests/e2e.sh
+        echo "testcase: kpt_sops"
+        REPODIR=$(pwd)
+        tmp=$(mktemp -d "/tmp/e2e.kpt_sops.XXXXXXXX")
+        cd "${tmp}"
+        cp -r "$REPODIR"/examples/sops .
+        sed -i 's|gcr.io/kpt-functions/sops|gcr.io/kpt-functions/sops:dev|' sops/local-configs/function.yaml
+        curl -fsSL -o key.asc https://raw.githubusercontent.com/mozilla/sops/master/pgp/sops_functional_tests_key.asc
+        SOPS_IMPORT_PGP="$(cat key.asc)" kpt fn run sops/local-configs
+        cat sops/local-configs/to-decrypt.yaml
+        cat sops/local-configs/to-encrypt.yaml
