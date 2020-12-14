@@ -1,0 +1,27 @@
+diff --git a/sops/results/results-0.yaml b/sops/results/results-0.yaml
+new file mode 100644
+index 0000000..38f0af7
+--- /dev/null
++++ b/sops/results/results-0.yaml
+@@ -0,0 +1,21 @@
++- message: |-
++    Exception for apiVersion: v1, kind: somekind, name: toDecrypt: YAMLException: bad indentation of a mapping entry at line 37, column 73:
++         ... rate them by commas. For example:
++                                             ^
++  severity: error
++- message: "Sops command results in error for\napiVersion: v1\nkind: somekind\nmetadata:\n
++    \ name: toDecrypt\nnnn-password: 'ENC[AES256_GCM,data:Rob2PTsyuR3uiE9H6Q==,iv:z31+IEaEkb/dkqfqkHH1r914YFkGYNCkdRdAkDIwF6A=,tag:DJ9mplT+bYa7aDGyTi6VpA==,type:str]'\nuser-password:
++    'ENC[AES256_GCM,data:5rW0QrrcB2I0C/xlvhV5,iv:wEUcbEm+Gb/RdXkCICS9UeOqX9f1u/NSm4h6GVAoMGM=,tag:RKWC80qIVC5OzM26eZzj+w==,type:str]'\nk8s-password:
++    'ENC[AES256_GCM,data:TftB4QU9nerU,iv:PNbpQQlMPIZSm9cGcPz6b6jZ6fP2LFNNHm1+8+Vk04U=,tag:CKhzkyT/absQ3P0FaKaRNA==,type:str]'\nsops:\n
++    \ kms: []\n  gcp_kms: []\n  azure_kv: []\n  hc_vault: []\n  lastmodified: '2020-11-21T06:01:44Z'\n
++    \ mac: 'ENC[AES256_GCM,data:gtj2tphN4mMDTNjC6kY9/YQRycgOXp8O+wLkxhclzkhAlbX3i6LwCQTK0eNf4F98fjYthbaHp+SPMkDxG5jtyWHkXar5oPP8VuAOaoY4xQ8EC04yZrN49dXiYx49xbA2SzujmSdj6d6XPN2y5Afwm4iDSo/Zr30/LkV/AysiwDw=,iv:XNyiOO992DBQcWq8DpnjzosI2rAn0S9VFKO1cr1FB6M=,tag:lEo4aGIQ26BVg1JP61jr8Q==,type:str]'\n
++    \ pgp:\n  - created_at: '2020-09-08T03:53:21Z'\n    enc: |\n      -----BEGIN PGP
++    MESSAGE-----\n\n      hQEMAyUpShfNkFB/AQf/ea/MoY2R6mxLuhzL0sMQMdcxdU4gEeZN0WqvResle5IF\n
++    \     tDWTkdPjtH3g7x0EXfz9If4hvzf+6oSgbHfZtDypq5AbbBMxnLqRt9lThv1acAt0\n      sv/NTh1In/6pxA6Sg0mL3xLo1n6Yy0MrC2W1Z6pBG8pDjeKIusQDDQR8aoR+LLrL\n
++    \     FNS0UwgCtitSo5Gc3XbE15THxKZb5Nj7fbGYPX8bbHLx6YzEFlmr2TAFSeOaY4QH\n      WYTIHQkac5ei2iwIWZ30i6Y2T7pXOIDOSaz+Py+LgdtdK7QbphX0A32X4y2Fl7iC\n
++    \     1pWK16uLFyv9RiPSwFX8Wdn98nsE761EQBERerTTxdJcAW33K0nL1gkH00bZg0QW\n      cngoLIi9JJjuzaQ8IZEjPkT+0IWswOxu86rFC57abA5/klHOdulZEgqdSOx4Sru0\n
++    \     qNV8TTgxmXM/Xkdkc7r23xzxv0B0Z5AA/kWO/1M=\n      =E8el\n      -----END PGP
++    MESSAGE-----\n    fp: FBC7B9E2A4F9289AC0C1D4843D16CEE4A27381B4\n  encrypted_suffix:
++    password\n  version: 3.6.0\n\n [CMD]\t time=\"2020-12-12T09:02:24Z\" level=fatal
++    msg=\"flag provided but not defined: -cmd\"\n"
++  severity: error

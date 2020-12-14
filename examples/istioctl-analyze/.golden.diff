@@ -1,0 +1,24 @@
+diff --git a/istioctl-analyze/results/results-0.yaml b/istioctl-analyze/results/results-0.yaml
+new file mode 100644
+index 0000000..e365885
+--- /dev/null
++++ b/istioctl-analyze/results/results-0.yaml
+@@ -0,0 +1,18 @@
++- message: 'Istioctl analyze command results in error: function toString() { [native
++    code] }'
++  severity: error
++  file:
++    path: ''
++- message: 'Schema validation error: gateway must have at least one server'
++  severity: error
++  tags:
++    documentation_url: 'https://istio.io/docs/reference/config/analysis/IST0106?ref=istioctl-analyze'
++    origin: Gateway httpbin-gateway.default
++    code: IST0106
++  resourceRef:
++    apiVersion: networking.istio.io/v1alpha3
++    kind: Gateway
++    namespace: ''
++    name: httpbin-gateway
++  file:
++    path: configs/example-config.yaml

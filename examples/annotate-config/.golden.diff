@@ -1,0 +1,34 @@
+diff --git a/annotate-config/configs/example-config.yaml b/annotate-config/configs/example-config.yaml
+index 6cce3bb..4d50f2a 100644
+--- a/annotate-config/configs/example-config.yaml
++++ b/annotate-config/configs/example-config.yaml
+@@ -2,6 +2,8 @@ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   name: the-map
++  annotations:
++    configmanagement.gke.io/namespace-selector: sre-supported
+ data:
+   some-key: some-value
+ ---
+@@ -9,6 +11,8 @@ apiVersion: v1
+ kind: Service
+ metadata:
+   name: the-service
++  annotations:
++    configmanagement.gke.io/namespace-selector: sre-supported
+ spec:
+   clusterIP: None
+   publishNotReadyAddresses: true
+diff --git a/annotate-config/functions/fn-config.yaml b/annotate-config/functions/fn-config.yaml
+index b7a173a..16c0058 100644
+--- a/annotate-config/functions/fn-config.yaml
++++ b/annotate-config/functions/fn-config.yaml
+@@ -7,6 +7,7 @@ metadata:
+       container:
+         image: gcr.io/kpt-functions/annotate-config
+     config.kubernetes.io/local-config: 'true'
++    configmanagement.gke.io/namespace-selector: sre-supported
+ data:
+   annotation_name: configmanagement.gke.io/namespace-selector
+   annotation_value: sre-supported

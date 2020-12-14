@@ -1,0 +1,17 @@
+diff --git a/kubeval/results/results-0.yaml b/kubeval/results/results-0.yaml
+new file mode 100644
+index 0000000..65f4f09
+--- /dev/null
++++ b/kubeval/results/results-0.yaml
+@@ -0,0 +1,11 @@
++- message: 'Invalid type. Expected: [integer,null], given: string'
++  severity: error
++  resourceRef:
++    apiVersion: v1
++    kind: ReplicationController
++    namespace: ''
++    name: bob
++  file:
++    path: configs/example-config.yaml
++  field:
++    path: spec.replicas

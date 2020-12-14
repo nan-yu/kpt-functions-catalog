@@ -1,0 +1,20 @@
+diff --git a/suggest-psp/results/results-0.yaml b/suggest-psp/results/results-0.yaml
+new file mode 100644
+index 0000000..82f6166
+--- /dev/null
++++ b/suggest-psp/results/results-0.yaml
+@@ -0,0 +1,14 @@
++- message: Suggest explicitly disabling privilege escalation
++  severity: warn
++  tags:
++    category: security
++  resourceRef:
++    apiVersion: policy/v1beta1
++    kind: PodSecurityPolicy
++    namespace: ''
++    name: psp
++  file:
++    path: configs/example-config.yaml
++  field:
++    path: spec.allowPrivilegeEscalation
++    suggestedValue: false
