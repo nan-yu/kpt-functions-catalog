@@ -50,7 +50,7 @@ source "$DIR"/common.sh
 testcase "kpt_set_namespace_go_declarative_example"
 kpt pkg get "$CATALOG_REPO"/examples/set-namespace@set-ns-test .
 cat set-namespace/functions/fn-config.yaml
-kpt fn run set-namespace/configs --fn-path set-namespace/functions
+kpt fn run set-namespace
 cat set-namespace/configs/example-config.yaml
 assert_contains_string set-namespace/configs/example-config.yaml "namespace: example-ns"
 
