@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - set-ns-test-orginial
   pull_request:
     branches:
-      - master
+      - set-ns-test-orginial
   schedule:
     - cron:  '0 17 * * *'
 

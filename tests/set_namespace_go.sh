@@ -28,7 +28,7 @@ assert_contains_string example-configs/gatekeeper.yaml "namespace: example-ns"
 
 testcase "kpt_set_namespace_go_docker_declarative"
 kpt pkg get "$SDK_REPO"/example-configs example-configs
-cat >fc.yaml <<EOF
+cat >example-configs/fc.yaml <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -41,13 +41,12 @@ metadata:
 data:
   "namespace": "example-ns"
 EOF
-kpt fn source example-configs |
-  kpt fn run --fn-path fc.yaml >out.yaml
+kpt fn run example-configs >out.yaml
 assert_contains_string out.yaml "namespace: example-ns"
 
 testcase "kpt_set_namespace_go_declarative_example"
 kpt pkg get "$CATALOG_REPO"/examples/set-namespace .
-kpt fn run set-namespace/configs --fn-path set-namespace/functions
+kpt fn run set-namespace
 assert_contains_string set-namespace/configs/example-config.yaml "namespace: example-ns"
 
 testcase "kpt_set_namespace_go_docker_imperative_idempotency"
