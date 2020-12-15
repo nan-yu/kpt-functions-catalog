@@ -1,0 +1,1 @@
+-e SOPS_IMPORT_PGP="$(curl -s https://raw.githubusercontent.com/mozilla/sops/master/pgp/sops_functional_tests_key.asc)"
