@@ -73,7 +73,7 @@ jobs:
         cd functions/go
         BUILDONLY=true TAG=dev ./publish-functions.sh
     - name: Run all e2e tests
-      uses: docker://dockerhubnyu/blueprint-qualification:dev
+      uses: nan-yu/cnrm-blueprints/kpt-function-qualification-action@v3
       env:
         BLUEPRINT_DIRECTORY: examples
         VALIDATE_PACKAGES: "annotate-config,istioctl-analyze,kubeval, set-namespace,suggest-psp"
